@@ -1,0 +1,47 @@
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /logs/cowrie/*.json
+  json.keys_under_root: true
+  json.overwrite_keys: true
+  processors:
+    - add_fields:
+        target: ''
+        fields:
+          event_source: cowrie
+
+- type: log
+  enabled: true
+  paths:
+    - /logs/ai_analysis.json
+  json.keys_under_root: true
+  json.add_error_key: true
+  processors:
+    - add_fields:
+        target: ''
+        fields:
+          event_source: gemini_ai
+    - timestamp:
+        field: timestamp
+        layouts:
+          - '2006-01-02T15:04:05.999999'
+
+- type: log
+  enabled: true
+  paths:
+    - /logs/tanner/tanner_report.json
+  json.keys_under_root: true
+  json.overwrite_keys: true
+  processors:
+    - add_fields:
+        target: ''
+        fields:
+          event_source: tanner
+
+output.elasticsearch:
+  hosts: ["elasticsearch:9200"]
+  pipeline: geoip_pipeline
+
+setup.kibana:
+  host: "kibana:5601"

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RVCE - RV College of Engineering Portal Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .login-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            width: 100%;
+            max-width: 450px;
+        }
+        .header {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e4080 100%);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+        .logo-section {
+            margin-bottom: 15px;
+        }
+        .college-logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 32px;
+            color: #2c5aa0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .college-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .college-subtitle {
+            font-size: 14px;
+            opacity: 0.95;
+            letter-spacing: 0.5px;
+        }
+        .login-form {
+            padding: 40px 35px;
+        }
+        .form-title {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        .form-input:focus {
+            border-color: #2c5aa0;
+            box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+        }
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 13px;
+        }
+        .remember-me {
+            display: flex;
+            align-items: center;
+            color: #666;
+        }
+        .remember-me input {
+            margin-right: 6px;
+            cursor: pointer;
+        }
+        .forgot-password {
+            color: #2c5aa0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .forgot-password:hover {
+            color: #1e4080;
+            text-decoration: underline;
+        }
+        .login-button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e4080 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
+        }
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(44, 90, 160, 0.4);
+        }
+        .login-button:active {
+            transform: translateY(0);
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            font-size: 13px;
+            color: #666;
+            border-top: 1px solid #e0e0e0;
+        }
+        .footer a {
+            color: #2c5aa0;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .divider {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+        .divider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+            background: #e0e0e0;
+        }
+        .divider span {
+            background: white;
+            padding: 0 15px;
+            position: relative;
+            color: #999;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="header">
+            <div class="logo-section">
+                <div class="college-logo">RV</div>
+            </div>
+            <div class="college-name">RV COLLEGE OF ENGINEERING</div>
+            <div class="college-subtitle">Autonomous Institution Affiliated to VTU</div>
+        </div>
+        
+        <div class="login-form">
+            <h2 class="form-title">Student/Staff Portal Login</h2>
+            <form action="/login" method="GET">
+                <div class="form-group">
+                    <label class="form-label" for="username">Username / Email ID</label>
+                    <input type="text" id="username" name="username" class="form-input" placeholder="Enter your username or email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-input" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="remember-forgot">
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember"> Remember me
+                    </label>
+                    <a href="/forgot-password" class="forgot-password">Forgot Password?</a>
+                </div>
+                
+                <button type="submit" class="login-button">Login to Portal</button>
+                
+                <div class="divider">
+                    <span>Secure Access</span>
+                </div>
+            </form>
+            <script>
+                document.querySelector('form').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const username = document.getElementById('username').value.toLowerCase();
+                    const password = document.getElementById('password').value;
+                    
+                    // Send data to honeypot backend and redirect
+                    fetch('/login?username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password))
+                        .catch(function() {})
+                        .finally(function() {
+                            // Redirect based on username
+                            setTimeout(function() {
+                                if (username === 'admin' || username.includes('admin')) {
+                                    window.location.href = '/admin-portal';
+                                } else {
+                                    window.location.href = '/student-portal';
+                                }
+                            }, 100);
+                        });
+                });
+            </script>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2025 RV College of Engineering. All rights reserved.</p>
+            <p style="margin-top: 8px;">
+                <a href="/help">Help</a> | 
+                <a href="/privacy">Privacy Policy</a> | 
+                <a href="/contact">Contact IT Support</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

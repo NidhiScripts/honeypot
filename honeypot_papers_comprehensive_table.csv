@@ -1,0 +1,26 @@
+Paper #,Title,Authors,Key Innovation,Best Performance Metric,Datasets,Application Domain,Relevance to Your Project
+1,Real-Time Honeypot System Design,St. Cloud State Univ,Puppet automation + ELK Stack,Multi-honeypot coordination,Custom network,Infrastructure,⭐⭐⭐⭐⭐ FOUNDATIONAL
+2,CNN-LSTM-Transformer Hybrid Framework,Jun Wang et al (2025),Two-stage deep learning fusion,"F1: 0.9778, 0.9695","UNSW-NB15, CICIDS2017",AI Architecture,⭐⭐⭐⭐⭐ CORE AI
+3,AI-Driven Adaptive Honeypots,Multiple (2024-25),Real-time threat intelligence,Increased detection rate,Custom,Adaptive Systems,⭐⭐⭐⭐⭐ INNOVATION
+4,Reinforced Honeypot + Game Theory,IOSR Journals (2023),DQN + behavioral modeling,"0.975 accuracy, 14% efficiency",Custom/simulated,Game Theory,⭐⭐⭐⭐ ADVANCED
+5,Quantum LS-SVM for IDS,PMC/NIH (2025),Exhaustive feature selection,99.3-99.5% accuracy,"NSL-KDD, CIC-IDS, UNSW-NB15",Feature Selection,⭐⭐⭐⭐ BENCHMARK
+6,ML-Based Threat Detection,IJETT Journal,Random Forest classification,99.20% malware detection,Malware samples,Malware,⭐⭐⭐ SPECIFIC
+7,Honeypot Lab for Teaching [FOUNDATION],Northumbria Univ (2018),HILV/LIHV educational design,Student engagement (measured),Real university attacks,EDUCATION,⭐⭐⭐⭐⭐ FOUNDATION
+8,IoT Botnet Detection (Separable CNN),Aliabadi & Hashemipour,Separable CNN efficiency,Computational efficiency,IoT datasets,IoT-Botnet,⭐⭐⭐ IoT
+9,Nepenthes Botnet Detection,Kumar et al (2013),Automated malware collection,Known botnet detection,Real network,Botnet,⭐⭐⭐ HISTORICAL
+10,eBPF-based Ransomware Detection,Zhuravchak et al (2025),Kernel-level syscall monitoring,Multiple families detected,Real ransomware samples,Ransomware,⭐⭐⭐ OPTIONAL
+11,Honeypot Allocation via Game Theory,Anwar et al (2021),Game theory placement,Optimal placement strategy,Network models,Strategic Placement,⭐⭐⭐ STRATEGIC
+12,Cyber Deception Techniques,Javadpour et al (2024),Deception techniques survey,120+ citations (high impact),Literature review,Deception Methods,⭐⭐ REFERENCE
+13,University Honeypot Deployment,CEUR-WS (2019),LIHP vs MIHP tradeoff,Cost-benefit analysis,Real university,University,⭐⭐⭐⭐ CASE STUDY
+14,Attacker Profiling Analysis,CEUR-WS (2023),Sequential pattern analysis,4 attacker profiles,Distributed honeypots,Profiling,⭐⭐⭐ ANALYSIS
+15,DDoS Detection (PCA-EDAD),Abiramasundari et al,PCA + Random Forest,"99.885% accuracy, 0.05% FAR",CIC-DDoS2019,DDoS,⭐⭐⭐ ATTACK TYPE
+16,Zero-Day Detection (Autoencoder),EAI (2024),Autoencoder anomaly detection,Anomaly-based detection,Vulnerability datasets,Zero-Day,⭐⭐⭐⭐ DETECTION
+17,Sensor Network Anomaly Detection,WSN Research (2024),Multi-technique ML approach,Real-time detection,IoT networks,IoT-Networks,⭐⭐ IoT
+18,Zero-Day Exploit Detection (Unit42),Palo Alto Networks,Context-based deep learning,Real CVE detection,Real-world traffic,Exploit Detection,⭐⭐⭐⭐ PRACTICAL
+19,CNN-LSTM for IoT IDS,PMC/NIH (2022),CNN-LSTM combination,>90% accuracy,UNSW-NB15,IoT-IDS,⭐⭐⭐ ARCHITECTURE
+20,BotFinder through Honeypots,CCDCOE (2012),Hadoop + 97 honeypots,Very low false positives,Enterprise network,Enterprise Scale,⭐⭐⭐⭐ SCALE
+21,Cloud-Native AWS Honeypot,Royal Holloway (2022),AWS AMI + auto-provisioning,Automated defense mode,AWS environment,Cloud,⭐⭐⭐ DEPLOYMENT
+22,IoT Firmware Analysis Tool,Eric Yoc et al (2024),Comprehensive binary analysis,Comprehensive vulnerability scan,IoT firmware,Firmware,⭐⭐ OPTIONAL
+23,Knowledge Graphs for Visualization,Apriorit (2025),AI + relationship mapping,Relationship visualization,Cyber threat data,VISUALIZATION,⭐⭐⭐⭐ EDUCATION
+24,EPA IoT Honeypot (Zero-Day),SIDN Labs (2021),Karonte + FirmAE integration,Zero-day detection capability,IoT firmware,Zero-Day IoT,⭐⭐⭐⭐ ADVANCED
+25,Attack Graph Visualization,PuppyGraph (2025),MITRE ATT&CK mapping,Attack path identification,Network models,EDUCATION,⭐⭐⭐⭐ EDUCATION

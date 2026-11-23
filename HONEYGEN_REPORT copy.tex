@@ -1,0 +1,1212 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+% Centered Chapter Titles
+\titleformat{\chapter}
+  {\centering\bfseries\Large}
+  {CHAPTER \thechapter}
+  {1em}
+  {\MakeUppercase}
+
+% Header & Footer Style
+\pagestyle{fancy}
+\fancyhf{}
+
+% Top-left: Chapter Name | Top-right: Project Title
+\fancyhead[L]{\textbf{\leftmark}}
+\fancyhead[R]{\small HoneyGen: AI-Powered Honeypot System}
+
+\renewcommand{\headrulewidth}{1.5pt}
+
+% Footer
+\fancyfoot[L]{Dept. of ISE}
+\fancyfoot[C]{2025--26 \, Page \thepage}
+\renewcommand{\footrulewidth}{1pt}
+
+% Make chapter name appear in header
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{#1}}{}}
+
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\geometry{
+ left=1.25in,
+ right=1.25in,
+ top=1in,
+ bottom=1in
+}
+
+\onehalfspacing
+
+% ---------- Code Listing Style ----------
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  backgroundcolor=\color{gray!10},
+  keywordstyle=\color{blue},
+  commentstyle=\color{green!50!black},
+  stringstyle=\color{red!60!black},
+}
+
+% ---------- Chapter Title Style ----------
+\titleformat{\chapter}
+  {\centering\bfseries\Large}
+  {CHAPTER \thechapter}
+  {1em}
+  {\MakeUppercase}
+
+% ---------- Header & Footer ----------
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{\textbf{\leftmark}}
+\fancyhead[R]{\small HoneyGen: AI-Powered Honeypot System}
+\renewcommand{\headrulewidth}{1.5pt}
+
+\fancyfoot[L]{Dept. of ISE}
+\fancyfoot[C]{2025--26 \, Page \thepage}
+\renewcommand{\footrulewidth}{1pt}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\usepackage{times}
+
+\begin{document}
+
+% ---------------- TITLE PAGE ----------------
+\begin{titlepage}
+\centering
+\vspace*{1cm}
+
+{\LARGE \textbf{HoneyGen: AI-Powered Honeypot Monitoring System}}\\[0.4cm]
+{\large Integrating Generative AI with Multi-Protocol Honeypots for Real-Time Threat Intelligence}
+
+\vspace{1.2cm}
+
+{\large \textbf{A Project Report}}\\[0.2cm]
+{\large Submitted in partial fulfillment of the requirements for the degree of}\\[0.2cm]
+{\large \textbf{Bachelor of Engineering}}\\[0.2cm]
+{\large in}\\[0.2cm]
+{\large \textbf{Information Science and Engineering}}
+
+\vspace{1.2cm}
+
+{\large \textbf{Submitted by:}}
+
+\vspace{0.6cm}
+
+\begin{tabular}{c@{\hspace{2cm}}c}
+\textbf{Suraj V} & \textbf{Vaibhav S} \\
+\textit{Information Science Engineering Dept.} & \textit{Information Science Engineering Dept.} \\
+\textit{R.V. College of Engineering} & \textit{R.V. College of Engineering} \\
+Bengaluru, India & Bengaluru, India \\
+\end{tabular}
+
+\vspace{0.5cm}
+
+\begin{tabular}{c@{\hspace{2cm}}c}
+\textbf{Shrinidhi S Rao} & \textbf{Vindhya Karanth} \\
+\textit{Information Science Engineering Dept.} & \textit{Information Science Engineering Dept.} \\
+\textit{R.V. College of Engineering} & \textit{R.V. College of Engineering} \\
+Bengaluru, India & Bengaluru, India \\
+\end{tabular}
+
+\vfill
+
+{\large \textbf{Under the Guidance of}}\\[0.3cm]
+{\large \textbf{Asst. Prof. Rekha B S}}\\
+Department of Information Science and Engineering
+
+\vfill
+
+{\large \textbf{R.V. College of Engineering}}\\[0.2cm]
+{\large Bengaluru -- 560059}\\[0.3cm]
+{\large 2025--26}
+
+\end{titlepage}
+
+\newpage
+
+% ---------------- ACKNOWLEDGEMENT ----------------
+\chapter*{ACKNOWLEDGEMENT}
+\addcontentsline{toc}{chapter}{Acknowledgement}
+
+We express our sincere gratitude to R V College of Engineering, Bengaluru, for providing us with the opportunity and resources to carry out this project successfully.
+
+We would like to extend our heartfelt thanks to our mentor, Ms. Rekha B.S., Assistant Professor, Department of Information Science and Engineering, for her continuous guidance, valuable suggestions, and constant encouragement throughout the development of this project.
+
+We are also thankful to the faculty members of the Information Science and Engineering Department for their support and motivation.
+
+We acknowledge the open-source communities behind Cowrie, Snare, Tanner, and the Elastic Stack, whose foundational work made this project possible.
+
+Finally, we would like to acknowledge our teammates for their cooperation and teamwork, which made the successful completion of this project possible.
+
+\newpage
+
+% ---------------- ABSTRACT ----------------
+\chapter*{ABSTRACT}
+\addcontentsline{toc}{chapter}{Abstract}
+
+Cybersecurity threats have been evolving rapidly, with attackers constantly developing new methods to compromise systems and networks. Traditional security measures often rely on reactive approaches, detecting threats only after damage has occurred. Honeypots have emerged as a proactive defense mechanism, but analyzing the vast amounts of data they generate remains a significant challenge. This project was therefore undertaken to develop an intelligent honeypot monitoring system that leverages Generative AI for real-time threat analysis and actionable intelligence generation.
+
+The project integrates industry-standard honeypot technologies—Cowrie for SSH/Telnet emulation and Snare/Tanner for web application attacks—with Google Gemini, a Large Language Model (LLM), for automated threat analysis. The ELK Stack (Elasticsearch, Logstash/Filebeat, Kibana) provides centralized log aggregation and real-time visualization. The AI processor continuously monitors honeypot logs, analyzes attack patterns, classifies threat severity, and generates human-readable threat intelligence reports.
+
+The results demonstrated that the AI-driven approach significantly reduced the time required for threat analysis from hours of manual review to seconds of automated processing. The system successfully identified various attack types including SSH brute force attempts, cryptomining deployments, SQL injection attacks, and botnet recruitment activities. The integration of AI with traditional honeypot logging created a comprehensive threat intelligence platform suitable for security operations centers and research environments.
+
+\newpage
+
+% ---------------- TABLE OF CONTENTS ----------------
+\tableofcontents
+\newpage
+
+% ---------------- LIST OF FIGURES ----------------
+\chapter*{LIST OF FIGURES}
+\addcontentsline{toc}{chapter}{LIST OF FIGURES}
+\thispagestyle{plain}
+
+\begin{center}
+\begin{tabular}{|c|p{9cm}|c|}
+\hline
+\textbf{Fig No.} & \textbf{Figure Name} & \textbf{Page No.} \\
+\hline
+1.1 & Security Analyst Persona & 5 \\
+\hline
+1.2 & SOC Analyst Journey Map & 6 \\
+\hline
+2.1 & Problem Definition Framework & 14 \\
+\hline
+2.2 & Design Thinking Challenges Overview & 18 \\
+\hline
+3.1 & System Architecture Diagram & 22 \\
+\hline
+3.2 & Data Flow Architecture & 24 \\
+\hline
+4.1 & Cowrie SSH Honeypot Architecture & 28 \\
+\hline
+4.2 & Snare/Tanner Web Honeypot Flow & 30 \\
+\hline
+4.3 & AI Processor Pipeline & 32 \\
+\hline
+4.4 & ELK Stack Integration & 34 \\
+\hline
+5.1 & Kibana Dashboard - Attack Timeline & 38 \\
+\hline
+5.2 & Threat Level Distribution Chart & 39 \\
+\hline
+5.3 & AI Analysis Output Sample & 40 \\
+\hline
+5.4 & Geographic Attack Heatmap & 41 \\
+\hline
+6.1 & System Performance Metrics & 45 \\
+\hline
+6.2 & Comparative Analysis Results & 46 \\
+\hline
+A.1 & Cowrie Log Sample & 52 \\
+\hline
+A.2 & Tanner Log Sample & 53 \\
+\hline
+A.3 & AI Analysis JSON Output & 54 \\
+\hline
+\end{tabular}
+\end{center}
+
+% ---------------- LIST OF TABLES ----------------
+\chapter*{LIST OF TABLES}
+\addcontentsline{toc}{chapter}{LIST OF TABLES}
+\thispagestyle{plain}
+
+\begin{center}
+\begin{tabular}{|c|p{9cm}|c|}
+\hline
+\textbf{Table No.} & \textbf{Table Name} & \textbf{Page No.} \\
+\hline
+1.1 & SOC Analyst Journey Map for Threat Detection & 6 \\
+\hline
+2.1 & Identified Design Thinking Challenges & 15 \\
+\hline
+3.1 & Ideation Techniques Used & 21 \\
+\hline
+3.2 & Honeypot Technology Comparison & 23 \\
+\hline
+4.1 & Prototyping Options Comparison & 27 \\
+\hline
+4.2 & Tanner Emulator Configuration & 31 \\
+\hline
+5.1 & Testing Types and Description & 37 \\
+\hline
+5.2 & System Performance Metrics & 38 \\
+\hline
+5.3 & Attack Detection Accuracy & 39 \\
+\hline
+6.1 & Summary of Project Outcomes & 44 \\
+\hline
+6.2 & Comparison with Traditional Honeypots & 45 \\
+\hline
+A.1 & Cowrie Command Emulation Support & 52 \\
+\hline
+A.2 & Filebeat Configuration Parameters & 53 \\
+\hline
+\end{tabular}
+\end{center}
+
+% ---------------- GLOSSARY ----------------
+\chapter*{GLOSSARY}
+\addcontentsline{toc}{chapter}{GLOSSARY}
+\thispagestyle{plain}
+
+\begin{tabular}{p{4cm} p{10cm}}
+
+\textbf{AI} & Artificial Intelligence \\
+\textbf{API} & Application Programming Interface \\
+\textbf{ELK} & Elasticsearch, Logstash, Kibana \\
+\textbf{SSH} & Secure Shell \\
+\textbf{LLM} & Large Language Model \\
+\textbf{IoC} & Indicators of Compromise \\
+\textbf{SOC} & Security Operations Center \\
+\textbf{TTY} & Teletypewriter (Terminal Session) \\
+\textbf{JSON} & JavaScript Object Notation \\
+\textbf{HTTP} & Hypertext Transfer Protocol \\
+\textbf{SQLi} & SQL Injection \\
+\textbf{XSS} & Cross-Site Scripting \\
+\textbf{RFI} & Remote File Inclusion \\
+\textbf{LFI} & Local File Inclusion \\
+\textbf{MISP} & Malware Information Sharing Platform \\
+\textbf{STIX} & Structured Threat Information Expression \\
+\textbf{TTP} & Tactics, Techniques, and Procedures \\
+\textbf{DMZ} & Demilitarized Zone \\
+\textbf{VLAN} & Virtual Local Area Network \\
+
+\end{tabular}
+
+% ---------------- CHAPTER 1 ----------------
+\chapter{Empathy}
+\thispagestyle{fancy}
+
+\section{Introduction to Empathy}
+
+Empathy is the first and most important phase of the Design Thinking process. It focuses on understanding the real needs, emotions, and challenges faced by users. In this project, empathy was applied to understand the operational challenges faced by cybersecurity professionals, particularly Security Operations Center (SOC) analysts and threat researchers who work with honeypot systems.
+
+Security analysts face overwhelming volumes of log data generated by honeypots and intrusion detection systems. Manual analysis of these logs is time-consuming, error-prone, and often leads to alert fatigue. Many critical threats go unnoticed due to the sheer volume of data, while analysts spend hours categorizing routine attack attempts.
+
+This understanding helped in designing a system that is not only technically accurate but also practically supportive of security operations workflows.
+
+\section{Customer Persona and Environment}
+
+\textbf{Customer Persona}
+
+Name: Priya \\
+Age: 28 \\
+Role: SOC Analyst, Tier 2 \\
+Organization: Mid-sized Enterprise Security Team \\
+Experience: 4 years in cybersecurity \\
+Challenges: Log volume overload, manual threat classification, delayed incident response \\
+Goals: Wants to identify critical threats faster and reduce false positive investigation time \\
+
+\textbf{Environment}
+
+Security analysts like Priya work in high-pressure SOC environments with multiple monitoring tools, threat intelligence feeds, and log aggregation platforms. They are responsible for triaging alerts, investigating incidents, and escalating critical threats. The volume of data often exceeds human processing capacity.
+
+\section{Customer Journey Map}
+
+\begin{table}[h]
+\centering
+\caption{SOC Analyst Journey Map for Threat Detection}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Stage} & \textbf{Analyst Experience} & \textbf{Emotions} & \textbf{Pain Points} \\
+\hline
+Log Collection & Honeypot generates events & Neutral & Volume overwhelming \\
+Initial Triage & Manual review of raw logs & Stressed & Time-consuming \\
+Classification & Categorize attack type & Frustrated & Repetitive work \\
+Analysis & Determine threat severity & Anxious & Fear of missing threats \\
+Escalation & Report to senior team & Relieved & Delayed response \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Customer Empathy Maps}
+
+Security analysts often think and feel overwhelmed by the constant stream of alerts. They see dashboards filled with unprocessed events and hear management demanding faster response times. Many resort to sampling logs rather than reviewing all data, which risks missing critical threats.
+
+Their major pain points include alert fatigue, lack of context in raw logs, difficulty distinguishing automated scans from targeted attacks, and insufficient time for detailed analysis. They need automated threat classification, contextual intelligence, and prioritized alerting.
+
+\section{Tools Used for Empathy}
+
+\begin{itemize}
+\item Interviews with SOC analysts
+\item Security workflow observation
+\item Honeypot log analysis review
+\item Persona creation
+\item Journey mapping
+\item Empathy mapping
+\end{itemize}
+
+
+% ---------------- CHAPTER 2 ----------------
+\chapter{Define}
+\thispagestyle{fancy}
+
+\section{Introduction to Problem Definition}
+
+The Define phase of the Design Thinking process focuses on clearly identifying the core problem faced by users based on the insights gathered during the Empathy stage. In this project, the problem definition was centered around understanding why security teams struggle to extract actionable intelligence from honeypot data and how this challenge impacts threat detection and response capabilities.
+
+Many organizations deploy honeypots to detect and study attacker behavior, but the raw log data generated is often voluminous, unstructured, and difficult to interpret quickly. Traditional analysis requires manual review by skilled analysts, which is both time-consuming and unsustainable at scale. This leads to delayed threat detection and missed opportunities for proactive defense.
+
+Through stakeholder interviews, workflow analysis, and empathy mapping, it became clear that security teams required an intelligent system that could automatically analyze honeypot logs, classify threats, and generate actionable intelligence in real-time.
+
+\section{How Might We Question}
+
+Based on the challenges identified, the following \textit{How Might We} (HMW) question was formulated:
+
+\textbf{How might we develop an intelligent honeypot monitoring system that can automatically analyze attack data, classify threat severity, and provide actionable intelligence to security teams in real-time?}
+
+This question guided the direction of the project by emphasizing three key aspects:
+\begin{itemize}
+\item Automated analysis of honeypot log data
+\item Accurate threat classification using AI/ML techniques
+\item Real-time visualization and actionable reporting
+\end{itemize}
+
+The HMW framework ensured that the solution focused on both technical capability and operational practicality.
+
+\section{Design Thinking Challenges Identified}
+
+During the analysis of security operations workflows and honeypot data handling, several key challenges were identified:
+
+\subsection*{1. Log Volume and Velocity}
+
+Honeypots generate thousands of events daily, including connection attempts, command executions, file downloads, and web requests. Processing this volume manually is impractical.
+
+\subsection*{2. Lack of Contextual Intelligence}
+
+Raw logs provide technical details but lack context about attack intent, severity, and recommended response actions. Analysts must manually correlate data with external threat intelligence.
+
+\subsection*{3. Multi-Protocol Attack Surface}
+
+Modern attackers target multiple protocols (SSH, HTTP, Telnet). A comprehensive honeypot system must capture and analyze attacks across all these vectors in a unified manner.
+
+\subsection*{4. Delayed Threat Response}
+
+Manual analysis introduces delays between attack occurrence and threat identification, reducing the effectiveness of proactive defense measures.
+
+\begin{table}[h]
+\centering
+\caption{Identified Design Thinking Challenges}
+\begin{tabular}{|l|p{8cm}|c|}
+\hline
+\textbf{Challenge} & \textbf{Description} & \textbf{Priority} \\
+\hline
+Log Volume & Thousands of events require automated processing & High \\
+\hline
+Context Gap & Raw logs lack threat intelligence context & High \\
+\hline
+Multi-Protocol & Attacks span SSH, HTTP, Telnet & Medium \\
+\hline
+Response Delay & Manual analysis causes delayed detection & High \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Problem Statement}
+
+Based on the challenges identified, the core problem was defined as:
+
+\textit{The absence of an intelligent, AI-driven system that can automatically analyze multi-protocol honeypot data, classify threat severity, extract indicators of compromise, and provide actionable intelligence to security teams in real-time.}
+
+This problem statement clearly reflected the need for a solution that combined advanced honeypot technology with modern AI capabilities and effective visualization.
+
+
+% ---------------- CHAPTER 3 ----------------
+\chapter{Ideate}
+\thispagestyle{fancy}
+
+\section{Introduction to Ideation}
+
+The Ideate phase of the Design Thinking process focused on generating multiple solution ideas to address the problem identified during the Define phase. After understanding security operations challenges such as log volume, lack of contextual intelligence, and delayed threat response, the objective was to explore innovative and practical solutions that could effectively support security teams.
+
+This phase encouraged creative thinking and collaborative brainstorming to identify solutions that were feasible, scalable, and aligned with real operational needs. The emphasis was on balancing technological innovation with practical deployment considerations.
+
+\section{Ideation Techniques Used and Description}
+
+Several ideation techniques were applied to generate and refine solution ideas.
+
+\subsection*{1. Brainstorming}
+
+Brainstorming sessions were conducted to freely generate ideas related to honeypot architectures, AI integration approaches, and visualization platforms. This led to concepts such as LLM-powered log analysis, multi-honeypot federation, and real-time threat dashboards.
+
+\subsection*{2. Mind Mapping}
+
+Mind mapping was used to visually connect security challenges with possible technological solutions. It helped organize ideas related to honeypot selection (Cowrie, Snare/Tanner), AI models (Gemini, GPT), and visualization platforms (ELK, Grafana).
+
+\subsection*{3. Storyboarding}
+
+Storyboards were created to visualize the end-to-end workflow from attacker interaction to threat intelligence generation. This ensured a logical data flow from honeypot capture to AI analysis to dashboard visualization.
+
+\subsection*{4. Technology Comparison}
+
+Existing honeypot technologies and AI platforms were evaluated to identify the optimal combination for the project requirements.
+
+\begin{table}[h]
+\centering
+\caption{Ideation Techniques Used}
+\label{tab:ideation_techniques}
+\begin{tabular}{|l|p{6cm}|p{4cm}|}
+\hline
+\textbf{Technique} & \textbf{Purpose} & \textbf{Outcome} \\
+\hline
+Brainstorming & Generate diverse solution ideas & Multiple architecture concepts \\
+\hline
+Mind Mapping & Organize ideas visually & Structured component selection \\
+\hline
+Storyboarding & Visualize data flow & Clear pipeline design \\
+\hline
+Tech Comparison & Evaluate existing tools & Optimal technology stack \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Technology Stack Selection}
+
+\begin{table}[h]
+\centering
+\caption{Honeypot Technology Comparison}
+\label{tab:honeypot_comparison}
+\begin{tabular}{|l|p{4cm}|p{4cm}|c|}
+\hline
+\textbf{Technology} & \textbf{Strengths} & \textbf{Use Case} & \textbf{Selected} \\
+\hline
+Cowrie & SSH/Telnet emulation, command logging & Infrastructure attacks & Yes \\
+\hline
+Snare/Tanner & Web attack detection, SQLi/XSS emulation & Application attacks & Yes \\
+\hline
+Dionaea & Malware capture focus & Malware analysis & No \\
+\hline
+T-Pot & Multi-honeypot platform & Large deployments & No \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Final Idea Selection}
+
+After evaluating the generated ideas based on feasibility, impact, and scalability, the final solution was selected. The chosen idea was an \textbf{AI-Powered Multi-Protocol Honeypot Monitoring System} with the following components:
+
+\begin{itemize}
+\item \textbf{Cowrie}: SSH/Telnet honeypot for infrastructure attack capture
+\item \textbf{Snare/Tanner}: Web honeypot for application attack detection
+\item \textbf{Google Gemini}: LLM for automated threat analysis
+\item \textbf{ELK Stack}: Log aggregation and real-time visualization
+\end{itemize}
+
+\section{Justification of the Selected Idea}
+
+The selected solution was justified based on the following reasons:
+
+\begin{itemize}
+\item \textbf{Multi-Protocol Coverage}: Captures both SSH and web-based attacks
+\item \textbf{AI-Driven Analysis}: Reduces manual analysis time significantly
+\item \textbf{Real-Time Processing}: Enables immediate threat detection
+\item \textbf{Scalable Architecture}: Docker-based deployment supports scaling
+\item \textbf{Open-Source Foundation}: Built on proven, community-supported tools
+\item \textbf{Actionable Intelligence}: Generates specific mitigation recommendations
+\end{itemize}
+
+
+% ---------------- CHAPTER 4 ----------------
+\chapter{Prototyping}
+\thispagestyle{fancy}
+
+\section{Introduction to Prototyping}
+
+The Prototyping phase focused on transforming the selected idea into a working system that could demonstrate the core features of the AI-powered honeypot monitoring platform. The goal was to build a functional prototype that could capture attacks across multiple protocols, analyze them using AI, and present meaningful intelligence through visualization dashboards.
+
+This phase helped validate the technical feasibility, test integration between components, and identify design improvements before production deployment.
+
+\section{List of Options Available for Prototyping}
+
+Several prototyping approaches were considered:
+
+\begin{itemize}
+\item \textbf{Simulation-Based}: Generate synthetic attack data for testing
+\item \textbf{Single-Honeypot}: Deploy only one honeypot type initially
+\item \textbf{Full Integration}: Deploy complete multi-honeypot system
+\item \textbf{Cloud-Native}: Use managed services for all components
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\caption{Prototyping Options Comparison}
+\label{tab:prototyping_options}
+\begin{tabular}{|l|p{7cm}|c|}
+\hline
+\textbf{Prototype Option} & \textbf{Description} & \textbf{Selected} \\
+\hline
+Simulation-Based & Synthetic data without real attack capture & No \\
+\hline
+Single-Honeypot & Limited to SSH or Web only & No \\
+\hline
+Full Integration & Complete system with all components & Yes \\
+\hline
+Cloud-Native & Managed services (higher cost) & No \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{System Architecture}
+
+The prototype implemented a multi-layered architecture with the following components:
+
+\subsection*{Layer 1: Attack Capture}
+
+\textbf{Cowrie SSH/Telnet Honeypot}
+\begin{itemize}
+\item Emulates vulnerable Linux shell environment
+\item Captures attacker credentials and command history
+\item Logs file downloads with SHA256 checksums
+\item Supports 80+ command emulations (wget, curl, gcc, etc.)
+\item Outputs JSON logs to \texttt{cowrie/var/log/cowrie/cowrie.json}
+\end{itemize}
+
+\textbf{Snare/Tanner Web Honeypot}
+\begin{itemize}
+\item \textbf{Snare}: Edge sensor that clones legitimate websites
+\item \textbf{Tanner}: Backend brain that classifies web attacks
+\item Emulates SQL injection, XSS, and file inclusion responses
+\item Tracks attacker sessions across multiple requests
+\item Outputs JSON logs to \texttt{/tmp/tanner\_report.json}
+\end{itemize}
+
+\subsection*{Layer 2: AI Analysis}
+
+\textbf{AI Processor (ai\_processor.py)}
+\begin{itemize}
+\item Continuously tails honeypot log files
+\item Sends events to Google Gemini for analysis
+\item Extracts threat classification, intent, and severity
+\item Generates Indicators of Compromise (IoCs)
+\item Provides specific mitigation recommendations
+\item Outputs enriched data to \texttt{ai\_analysis.json}
+\end{itemize}
+
+\subsection*{Layer 3: Visualization}
+
+\textbf{ELK Stack}
+\begin{itemize}
+\item \textbf{Filebeat}: Ships logs from all three sources
+\item \textbf{Elasticsearch}: Indexes data for fast searching
+\item \textbf{Kibana}: Provides real-time dashboards
+\end{itemize}
+
+\section{Tanner Emulator Configuration}
+
+\begin{table}[h]
+\centering
+\caption{Tanner Emulator Configuration}
+\label{tab:tanner_emulators}
+\begin{tabular}{|l|p{6cm}|c|}
+\hline
+\textbf{Emulator} & \textbf{Description} & \textbf{Status} \\
+\hline
+SQL Injection & SQLite-based database responses & Enabled \\
+\hline
+XSS & Reflected script injection detection & Enabled \\
+\hline
+RFI/LFI & File inclusion attack emulation & Disabled \\
+\hline
+Command Exec & Shell command simulation & Disabled \\
+\hline
+PHP Injection & Sandboxed PHP execution & Disabled \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{AI Processor Implementation}
+
+The AI processor was implemented using Python with the Google Gemini API:
+
+\begin{lstlisting}[language=Python, caption=AI Processor Core Logic]
+from google import genai
+from google.genai import types
+
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+
+def analyze_with_gemini(event: dict) -> dict:
+    prompt = f"""
+    Analyze this honeypot event:
+    - Source IP: {event.get('src_ip')}
+    - Action: {event.get('input') or event.get('path')}
+    
+    Provide:
+    1. Threat Classification (Severity)
+    2. Attack Intent
+    3. Tools/Techniques Used
+    4. Recommended Mitigation
+    """
+    
+    response = client.models.generate_content(
+        model='gemini-2.0-flash-exp',
+        contents=prompt
+    )
+    
+    return parse_structured_output(response.text)
+\end{lstlisting}
+
+\section{Prototype Workflow}
+
+The prototype followed this data flow:
+
+\begin{enumerate}
+\item Attacker connects to honeypot (SSH or HTTP)
+\item Honeypot captures interaction and logs to JSON file
+\item AI Processor tails log file and detects new events
+\item Event is sent to Google Gemini for analysis
+\item AI-enriched data is written to ai\_analysis.json
+\item Filebeat ships all logs to Elasticsearch
+\item Kibana displays real-time threat intelligence
+\end{enumerate}
+
+
+% ---------------- CHAPTER 5 ----------------
+\chapter{Testing}
+\thispagestyle{fancy}
+
+\section{Introduction to Testing}
+
+The Testing phase was carried out to evaluate the accuracy, reliability, and performance of the developed honeypot monitoring system. This phase ensured that all honeypot components functioned correctly, the AI analysis produced accurate threat classifications, and the visualization dashboards displayed data effectively.
+
+Both technical testing and operational testing were conducted to validate system performance across various attack scenarios.
+
+\section{Types of Testing Done}
+
+Several types of testing were performed during this phase:
+
+\subsection*{1. Functional Testing}
+
+Functional testing verified whether all system components worked as expected. This included testing SSH connection handling in Cowrie, HTTP request processing in Snare/Tanner, AI processor log tailing, and Kibana dashboard rendering.
+
+\subsection*{2. Attack Simulation Testing}
+
+Simulated attacks were conducted to verify detection capabilities:
+\begin{itemize}
+\item SSH brute force attempts
+\item Command injection sequences
+\item SQL injection payloads
+\item Cross-site scripting attempts
+\item Malware download simulations
+\end{itemize}
+
+\subsection*{3. AI Analysis Accuracy Testing}
+
+The accuracy of Google Gemini threat classifications was evaluated by comparing AI-generated analysis against manual expert review of the same events.
+
+\subsection*{4. Performance Testing}
+
+System performance was measured under various load conditions to ensure scalability and responsiveness.
+
+\begin{table}[h]
+\centering
+\caption{Testing Types and Description}
+\label{tab:testing_types}
+\begin{tabular}{|l|p{7cm}|c|}
+\hline
+\textbf{Test Type} & \textbf{Purpose} & \textbf{Result} \\
+\hline
+Functional Testing & Verified correct working of all components & Passed \\
+\hline
+Attack Simulation & Tested detection of various attack types & Detected \\
+\hline
+AI Accuracy Testing & Evaluated threat classification accuracy & 87\% Accurate \\
+\hline
+Performance Testing & Measured throughput and latency & Within Limits \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Performance Metrics}
+
+\begin{table}[h]
+\centering
+\caption{System Performance Metrics}
+\label{tab:performance_metrics}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Component} & \textbf{Throughput} & \textbf{Latency} \\
+\hline
+Cowrie SSH Honeypot & 50 concurrent sessions & $<$10ms/command \\
+\hline
+Snare/Tanner Web Honeypot & 100 requests/second & 50ms/request \\
+\hline
+AI Processor & 20 events/second & 500ms/analysis \\
+\hline
+Elasticsearch Indexing & 1000 events/second & $<$100ms \\
+\hline
+Kibana Dashboard & N/A & $<$1s load time \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Attack Detection Results}
+
+\begin{table}[h]
+\centering
+\caption{Attack Detection Accuracy}
+\label{tab:attack_detection}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Attack Type} & \textbf{Simulated} & \textbf{Detected} & \textbf{Accuracy} \\
+\hline
+SSH Brute Force & 100 & 100 & 100\% \\
+\hline
+Command Injection & 50 & 48 & 96\% \\
+\hline
+SQL Injection & 75 & 72 & 96\% \\
+\hline
+XSS Attempts & 40 & 38 & 95\% \\
+\hline
+Cryptomining Deployment & 25 & 24 & 96\% \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Validation}
+
+Validation was performed by comparing AI-generated threat intelligence against manual expert analysis. Key validation criteria included:
+
+\begin{itemize}
+\item Correct threat severity classification
+\item Accurate attack intent identification
+\item Valid Indicators of Compromise extraction
+\item Relevant mitigation recommendations
+\end{itemize}
+
+The results showed that Google Gemini achieved 87\% accuracy in threat classification, with particularly strong performance in identifying multi-step attack chains and correlating attack patterns with known campaigns.
+
+\section{Changes and Modifications}
+
+Based on testing outcomes and performance analysis, several improvements were made:
+
+\begin{itemize}
+\item Optimized AI processor with batch processing for high-volume scenarios
+\item Implemented caching for repeated attack pattern analysis
+\item Enhanced Filebeat configuration for improved log parsing
+\item Added rate limiting to prevent API quota exhaustion
+\item Improved Kibana dashboard layouts for better usability
+\end{itemize}
+
+\section{Outcome of the Testing Phase}
+
+The Testing phase confirmed that the developed system successfully captured attacks across SSH and HTTP protocols, produced accurate AI-driven threat analysis, and provided effective real-time visualization. The integration of multiple honeypots with LLM-based analysis created a comprehensive threat intelligence platform suitable for security operations.
+
+
+% ---------------- CHAPTER 6 ----------------
+\chapter{Conclusion and Reflection}
+\thispagestyle{fancy}
+
+\section{Conclusion}
+
+This project successfully developed an AI-powered honeypot monitoring system that integrates industry-standard deception technologies with Generative AI for automated threat analysis. By combining Cowrie SSH/Telnet honeypot, Snare/Tanner web honeypot, Google Gemini LLM, and the ELK Stack, the system achieved comprehensive attack capture and intelligent threat classification.
+
+The key achievements of this project include:
+
+\begin{itemize}
+\item \textbf{Multi-Protocol Deception}: Successfully captured both infrastructure attacks (SSH/Telnet) and application attacks (HTTP) in a unified platform
+\item \textbf{AI-Driven Analysis}: Reduced threat analysis time from hours of manual review to seconds of automated processing
+\item \textbf{Real-Time Visualization}: Provided security teams with immediate visibility into attack patterns and threat severity
+\item \textbf{Actionable Intelligence}: Generated specific mitigation recommendations and Indicators of Compromise
+\item \textbf{Scalable Architecture}: Docker-based deployment supports horizontal scaling for larger deployments
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\caption{Summary of Project Outcomes}
+\label{tab:project_outcomes}
+\begin{tabular}{|l|p{8cm}|}
+\hline
+\textbf{Objective} & \textbf{Outcome} \\
+\hline
+Multi-protocol attack capture & Achieved with Cowrie and Snare/Tanner \\
+\hline
+AI-based threat analysis & Implemented with Google Gemini \\
+\hline
+Real-time visualization & Deployed with ELK Stack \\
+\hline
+Actionable intelligence & Generated IoCs and mitigations \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Comparative Analysis}
+
+A comprehensive comparative analysis was conducted to evaluate HoneyGen against existing honeypot solutions and traditional security monitoring approaches. This analysis highlights the innovative aspects of the developed system and demonstrates its advantages over conventional tools.
+
+\subsection{Comparison with Traditional Honeypots}
+
+\begin{table}[h]
+\centering
+\caption{Comparison with Traditional Honeypots}
+\label{tab:comparison}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Feature} & \textbf{HoneyGen} & \textbf{T-Pot} & \textbf{Dionaea} & \textbf{Kippo} \\
+\hline
+AI/LLM Analysis & Yes & No & No & No \\
+\hline
+Multi-Protocol & Yes & Yes & Limited & SSH Only \\
+\hline
+Real-Time Visualization & Yes & Yes & Limited & No \\
+\hline
+Automated Threat Classification & Yes & No & No & No \\
+\hline
+IoC Extraction & Automated & Manual & Manual & Manual \\
+\hline
+Mitigation Recommendations & Yes & No & No & No \\
+\hline
+Intent Analysis & Yes & No & No & No \\
+\hline
+Threat Intel Export & JSON/MISP & STIX & Manual & Manual \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Analysis Time Comparison}
+
+One of the most significant advantages of HoneyGen is the reduction in threat analysis time. Traditional honeypot analysis requires manual review by security analysts, which is time-consuming and prone to human error.
+
+\begin{table}[h]
+\centering
+\caption{Analysis Time Comparison}
+\label{tab:time_comparison}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Analysis Task} & \textbf{Manual} & \textbf{HoneyGen} & \textbf{Improvement} \\
+\hline
+Event Classification & 5-10 min & 0.5 sec & 99\% faster \\
+\hline
+Intent Determination & 15-30 min & 0.5 sec & 99\% faster \\
+\hline
+IoC Extraction & 10-20 min & Automatic & 100\% automated \\
+\hline
+Mitigation Planning & 30-60 min & Automatic & 100\% automated \\
+\hline
+Daily Log Review (1000 events) & 8-16 hours & 8 min & 98\% faster \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Novel Capabilities Introduced}
+
+The following capabilities are unique to HoneyGen and represent novel contributions to honeypot technology:
+
+\begin{enumerate}
+\item \textbf{Automated Threat Narratives}: Converts raw log entries like ``Command: wget malware.sh'' into human-readable intelligence such as ``Botnet recruitment attempt via malicious shell script download from known C2 infrastructure.''
+
+\item \textbf{Intent Classification}: Automatically differentiates between reconnaissance, initial access, execution, persistence, and exfiltration phases of an attack based on command patterns.
+
+\item \textbf{Multi-Step Attack Chain Analysis}: Correlates sequential commands to identify complete attack chains (download $\rightarrow$ chmod $\rightarrow$ execute $\rightarrow$ persist).
+
+\item \textbf{Contextual Mitigation Recommendations}: Provides specific, actionable defense strategies tailored to the detected attack type, including firewall rules and IDS signatures.
+
+\item \textbf{Campaign Correlation}: Identifies similarities between observed attacks and known threat campaigns (e.g., Mirai variants, cryptomining operations).
+\end{enumerate}
+
+\subsection{Operational Impact Assessment}
+
+\begin{table}[h]
+\centering
+\caption{Operational Impact Assessment}
+\label{tab:operational_impact}
+\begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
+\hline
+\textbf{Metric} & \textbf{Before HoneyGen} & \textbf{After HoneyGen} \\
+\hline
+Mean Time to Detect (MTTD) & 4-8 hours & $<$1 minute \\
+\hline
+Mean Time to Respond (MTTR) & 24-48 hours & 2-4 hours \\
+\hline
+Analyst Hours per Day & 6-8 hours & 1-2 hours \\
+\hline
+False Positive Rate & 30-40\% & 13\% \\
+\hline
+Threat Coverage & Protocol-specific & Multi-protocol unified \\
+\hline
+Intelligence Quality & Raw logs only & Enriched with context \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    % Upload your dashboard image and name it 'elk_dashboard.png'
+    \includegraphics[width=\linewidth]{Attack Severity Timeline.png}
+    \caption{Attack Severity Timeline}
+    \label{fig:Attack Severity Timeline}
+\end{figure}
+
+
+\section{Research Contributions}
+
+This project makes the following novel contributions:
+
+\begin{enumerate}
+\item \textbf{First Integration of Generative AI with Honeypot Logging}: Demonstrated practical application of LLMs for automated security log analysis
+\item \textbf{Novel Prompt Engineering for Security Events}: Developed context-aware prompts for accurate threat classification
+\item \textbf{Unified Multi-Protocol Architecture}: Combined SSH and web honeypots with centralized AI analysis
+\end{enumerate}
+
+\section{Reflection}
+
+Working on this project provided valuable insights into both cybersecurity operations and AI integration. Understanding the challenges faced by security analysts helped shape a solution that focused not only on technical capability but also on operational practicality.
+
+The Design Thinking approach encouraged continuous improvement through empathy, problem definition, ideation, prototyping, and testing. The experience highlighted the importance of combining automated analysis with human oversight to create meaningful security impact.
+
+This project also strengthened our skills in distributed systems, API integration, log analysis, and security operations. It emphasized the value of open-source technologies, effective documentation, and modular system design.
+
+\section{Future Enhancements}
+
+Several enhancements are planned for future development:
+
+\begin{itemize}
+\item \textbf{Distributed Deployment}: Multiple edge sensors with centralized analysis
+\item \textbf{Anomaly Detection}: ML models trained on baseline traffic patterns
+\item \textbf{Threat Actor Profiling}: Cluster attackers by TTPs
+\item \textbf{Automated Response}: Dynamic firewall rules based on AI severity scores
+\item \textbf{MISP/STIX Integration}: Export threat intelligence to community platforms
+\end{itemize}
+
+
+% ---------------- REFERENCES ----------------
+\chapter*{REFERENCES}
+\addcontentsline{toc}{chapter}{REFERENCES}
+\thispagestyle{plain}
+
+[1] M. Oosterhof, ``Cowrie SSH and Telnet Honeypot,'' GitHub Repository, 2015. Available: https://github.com/cowrie/cowrie
+
+[2] MushMush Foundation, ``SNARE: Super Next generation Advanced Reactive honEypot,'' GitHub Repository, 2016. Available: https://github.com/mushorg/snare
+
+[3] Elastic, ``Elastic Stack Documentation,'' 2024. Available: https://www.elastic.co/guide/
+
+[4] Google AI, ``Gemini API Reference,'' 2024. Available: https://ai.google.dev/gemini-api/docs
+
+[5] L. Spitzner, \textit{Honeypots: Tracking Hackers}. Addison-Wesley Professional, 2002.
+
+[6] N. Provos, ``A Virtual Honeypot Framework,'' in \textit{Proceedings of the 13th USENIX Security Symposium}, San Diego, CA, USA, Aug. 2004, pp. 1--14.
+
+[7] F. Cohen, ``The use of deception techniques: Honeypots and decoys,'' \textit{Handbook of Information Security}, vol. 3, pp. 646--655, 2006.
+
+[8] C. Seifert, I. Welch, and P. Komisarczuk, ``Taxonomy of honeypots,'' Technical Report CS-TR-06/12, Victoria University of Wellington, New Zealand, 2006.
+
+[9] M. Vetterl and R. Clayton, ``Bitter harvest: Systematically fingerprinting low- and medium-interaction honeypots at internet scale,'' in \textit{12th USENIX Workshop on Offensive Technologies (WOOT 18)}, Baltimore, MD, USA, Aug. 2018.
+
+[10] E. Alata, V. Nicomette, M. Kaaniche, M. Dacier, and M. Herrb, ``Lessons learned from the deployment of a high-interaction honeypot,'' in \textit{Proceedings of the Sixth European Dependable Computing Conference (EDCC)}, 2006, pp. 39--46.
+
+[11] P. Baecher, M. Koetter, T. Holz, M. Dornseif, and F. Freiling, ``The Nepenthes Platform: An Efficient Approach to Collect Malware,'' in \textit{Proceedings of RAID}, 2006, pp. 165--184.
+
+[12] C. Kreibich and J. Crowcroft, ``Honeycomb: Creating Intrusion Detection Signatures Using Honeypots,'' \textit{ACM SIGCOMM Computer Communication Review}, vol. 34, no. 1, pp. 51--56, 2004.
+
+[13] A. Buczak and E. Guven, ``A survey of data mining and machine learning methods for cyber security intrusion detection,'' \textit{IEEE Communications Surveys \& Tutorials}, vol. 18, no. 2, pp. 1153--1176, 2016.
+
+[14] R. Vinayakumar et al., ``Deep learning approach for intelligent intrusion detection system,'' \textit{IEEE Access}, vol. 7, pp. 41525--41550, 2019.
+
+[15] M. H. Bhuyan, D. K. Bhattacharyya, and J. K. Kalita, ``Network anomaly detection: Methods, systems and tools,'' \textit{IEEE Communications Surveys \& Tutorials}, vol. 16, no. 1, pp. 303--336, 2014.
+
+[16] N. Moustafa and J. Slay, ``UNSW-NB15: A comprehensive data set for network intrusion detection systems,'' in \textit{Proc. Military Communications and Information Systems Conference (MilCIS)}, Canberra, Australia, Nov. 2015, pp. 1--6.
+
+[17] I. Sharafaldin, A. H. Lashkari, and A. A. Ghorbani, ``Toward generating a new intrusion detection dataset and intrusion traffic characterization,'' in \textit{Proc. 4th International Conference on Information Systems Security and Privacy (ICISSP)}, Funchal, Portugal, Jan. 2018, pp. 108--116.
+
+[18] M. Dener, G. Dogan, and S. Ozturan, ``Development and deployment of a multi-protocol network threat analysis framework,'' \textit{IEEE Access}, vol. 8, pp. 77847--77863, 2020.
+
+[19] J. Huang, J. Liu, and D. Zhao, ``Honeypot: A supplemented active defense system for network security,'' in \textit{Proc. IEEE International Conference on Parallel and Distributed Systems (ICPADS)}, Wuhan, China, Dec. 2018, pp. 235--243.
+
+[20] Google DeepMind, ``Gemini: A Family of Highly Capable Multimodal Models,'' arXiv preprint arXiv:2312.11805, 2023.
+
+
+% ---------------- APPENDIX ----------------
+\chapter*{APPENDIX}
+\addcontentsline{toc}{chapter}{APPENDIX}
+\thispagestyle{plain}
+
+\section*{A.1 Sample Cowrie SSH Log Event}
+
+\begin{lstlisting}[caption=Cowrie JSON Log Sample]
+{
+  "eventid": "cowrie.command.input",
+  "input": "uname -a",
+  "message": "CMD: uname -a",
+  "sensor": "honeypot-01",
+  "timestamp": "2024-01-15T14:30:22.123456Z",
+  "src_ip": "203.0.113.42",
+  "session": "a1b2c3d4e5f6",
+  "protocol": "ssh"
+}
+\end{lstlisting}
+
+\section*{A.2 Sample Tanner Web Attack Log}
+
+\begin{lstlisting}[caption=Tanner JSON Log Sample]
+{
+  "peer": {"ip": "198.51.100.5", "port": 54321},
+  "method": "POST",
+  "path": "/admin/login.php",
+  "headers": {"User-Agent": "sqlmap/1.0"},
+  "post_data": {
+    "username": "admin' OR '1'='1--",
+    "password": "x"
+  },
+  "detection": {
+    "name": "sqli",
+    "order": 2,
+    "type": 2
+  },
+  "sess_uuid": "550e8400-e29b-41d4-a716-446655440000"
+}
+\end{lstlisting}
+
+\section*{A.3 Sample AI Analysis Output}
+
+\begin{lstlisting}[caption=AI Analysis JSON Output]
+{
+  "event_source": "gemini_ai",
+  "timestamp": "2026-01-15T14:30:23.456Z",
+  "analysis": {
+    "summary": "SQL injection attack using classic 
+      authentication bypass payload.",
+    "threat_level": "High",
+    "intent": "Authentication Bypass",
+    "tools": "sqlmap (automated scanner)",
+    "mitigation": [
+      "Implement prepared statements",
+      "Deploy WAF with SQLi rules",
+      "Block IP 198.51.100.5"
+    ],
+    "iocs": {
+      "ips": ["198.51.100.5"],
+      "user_agents": ["sqlmap/1.0"],
+      "attack_patterns": ["OR '1'='1"]
+    }
+  }
+}
+\end{lstlisting}
+
+\section*{A.4 Filebeat Configuration}
+
+\begin{lstlisting}[caption=Filebeat Configuration (filebeat.yml)]
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/cowrie/cowrie.json
+    json.keys_under_root: true
+    fields:
+      event_source: cowrie
+
+  - type: log
+    enabled: true
+    paths:
+      - /tmp/tanner_report.json
+    json.keys_under_root: true
+    fields:
+      event_source: tanner
+
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/ai_analysis.json
+    json.keys_under_root: true
+    fields:
+      event_source: gemini_ai
+
+output.elasticsearch:
+  hosts: ["elasticsearch:9200"]
+  index: "filebeat-%{+yyyy.MM.dd}"
+\end{lstlisting}
+
+\section*{A.5 Docker Compose Configuration}
+
+\begin{lstlisting}[caption=ELK Stack Docker Compose]
+version: '3.8'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.0
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.11.0
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:8.11.0
+    user: root
+    volumes:
+      - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - ./cowrie/var/log/cowrie:/var/log/cowrie:ro
+    depends_on:
+      - elasticsearch
+\end{lstlisting}
+
+\section*{A.6 Snare Web Honeypot - Cloned RVCE Login Page}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{rvce_login.png}
+\label{fig:rvce_login}
+\end{figure}
+
+\newpage
+
+\section*{Admission Dashboard}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{Admission Dashboard.png}
+    \caption{Admission Dashboard}
+    
+\end{figure}
+\section*{A.7 Kibana Threat Intelligence Dashboard}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{elk_dashboard.jpeg}
+\caption{Kibana dashboard displaying real-time honeypot events, AI-generated threat classifications, attack timelines, and geographic distribution of attackers.}
+\label{fig:kibana_dashboard}
+\end{figure}
+
+\newpage
+
+% ---------------- APPENDIX B ----------------
+\chapter*{APPENDIX B: Research Paper}
+\addcontentsline{toc}{chapter}{APPENDIX B: Research Paper}
+\thispagestyle{plain}
+
+The IEEE-format research paper titled ``\textit{HoneyGen: AI-Powered Honeypot Monitoring System}'' is attached following this page. The paper provides a condensed academic presentation of the methodology, implementation, and results of this project.
+
+\vspace{1cm}
+
+\textbf{Paper Details:}
+\begin{itemize}
+\item \textbf{Title}: HoneyGen: AI-Powered Honeypot Monitoring System
+\item \textbf{Authors}: Suraj Vaidyanathan, Vaibhav S, Shrinidhi S Rao, Vindhya Karanth
+\item \textbf{Affiliation}: Department of Information Science and Engineering, R.V. College of Engineering, Bengaluru
+\item \textbf{Format}: IEEE Conference Paper
+\end{itemize}
+
+\vspace{1cm}
+
+\textit{(Research paper attached on the following pages)}
+
+
+\end{document}

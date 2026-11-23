@@ -1,0 +1,42 @@
+{
+  "/": {
+    "hash": "abcd",
+    "headers": [
+      {
+        "Content-Type": "text/html"
+      }
+    ]
+  },
+  "/login": {
+    "hash": "abcd",
+    "headers": [
+      {
+        "Content-Type": "text/html"
+      }
+    ]
+  },
+  "/student-portal": {
+    "hash": "student_portal",
+    "headers": [
+      {
+        "Content-Type": "text/html"
+      }
+    ]
+  },
+  "/admin-portal": {
+    "hash": "admin_portal",
+    "headers": [
+      {
+        "Content-Type": "text/html"
+      }
+    ]
+  },
+  "/status_404": {
+    "hash": "abcd",
+    "headers": [
+      {
+        "Content-Type": "text/html"
+      }
+    ]
+  }
+}

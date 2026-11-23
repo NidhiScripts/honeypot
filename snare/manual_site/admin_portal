@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RVCE - Admin Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a2e;
+            color: #fff;
+        }
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #16213e;
+            padding: 20px;
+        }
+        .sidebar-logo {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #4ecca3;
+        }
+        .menu-item {
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .menu-item:hover {
+            background: #1a1a2e;
+        }
+        .menu-item.active {
+            background: #4ecca3;
+            color: #16213e;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 30px;
+        }
+        .top-bar {
+            background: #16213e;
+            padding: 20px 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar h1 {
+            color: #4ecca3;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: #16213e;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #4ecca3;
+        }
+        .stat-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #4ecca3;
+            margin: 10px 0;
+        }
+        .stat-label {
+            color: #aaa;
+            font-size: 14px;
+        }
+        .data-table {
+            background: #16213e;
+            padding: 25px;
+            border-radius: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 2px solid #1a1a2e;
+            color: #4ecca3;
+        }
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #1a1a2e;
+        }
+        tr:hover {
+            background: #1a1a2e;
+        }
+        .badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            background: #4ecca3;
+            color: #16213e;
+        }
+        .action-btn {
+            background: #4ecca3;
+            color: #16213e;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">🛡️ RVCE Admin</div>
+        <div class="menu-item active">📊 Dashboard</div>
+        <div class="menu-item">👥 Students</div>
+        <div class="menu-item">👨‍🏫 Faculty</div>
+        <div class="menu-item">📚 Courses</div>
+        <div class="menu-item">📅 Attendance</div>
+        <div class="menu-item">💰 Finances</div>
+        <div class="menu-item">⚙️ Settings</div>
+        <div class="menu-item">🚪 <a href="/" style="color: inherit; text-decoration: none;">Logout</a></div>
+    </div>
+    
+    <div class="main-content">
+        <div class="top-bar">
+            <h1>Administrator Dashboard</h1>
+            <div>Admin User | <span style="color: #4ecca3;">Last login: 30 Dec 2025</span></div>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">TOTAL STUDENTS</div>
+                <div class="stat-value">4,532</div>
+                <div style="color: #4ecca3; font-size: 14px;">↑ 3.5% from last month</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">ACTIVE FACULTY</div>
+                <div class="stat-value">287</div>
+                <div style="color: #4ecca3; font-size: 14px;">↑ 2 new this month</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">COURSES OFFERED</div>
+                <div class="stat-value">156</div>
+                <div style="color: #aaa; font-size: 14px;">Across 8 departments</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">AVG ATTENDANCE</div>
+                <div class="stat-value">87.3%</div>
+                <div style="color: #4ecca3; font-size: 14px;">↑ 1.2% improvement</div>
+            </div>
+        </div>
+        
+        <div class="data-table">
+            <h2 style="margin-bottom: 20px; color: #4ecca3;">Recent Activity</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Action</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1RV21CS001</td>
+                        <td>Rajesh Kumar</td>
+                        <td>Computer Science</td>
+                        <td>Fee Payment</td>
+                        <td>10:45 AM</td>
+                        <td><span class="badge">Completed</span></td>
+                        <td><button class="action-btn" onclick="alert('Loading details...')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>1RV21EC042</td>
+                        <td>Priya Sharma</td>
+                        <td>Electronics</td>
+                        <td>Grade Update</td>
+                        <td>10:32 AM</td>
+                        <td><span class="badge">Completed</span></td>
+                        <td><button class="action-btn" onclick="alert('Loading details...')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>1RV21ME078</td>
+                        <td>Amit Verma</td>
+                        <td>Mechanical</td>
+                        <td>Course Registration</td>
+                        <td>10:15 AM</td>
+                        <td><span class="badge">Completed</span></td>
+                        <td><button class="action-btn" onclick="alert('Loading details...')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>1RV21CV023</td>
+                        <td>Sneha Reddy</td>
+                        <td>Civil</td>
+                        <td>Library Book Issue</td>
+                        <td>09:58 AM</td>
+                        <td><span class="badge">Completed</span></td>
+                        <td><button class="action-btn" onclick="alert('Loading details...')">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>1RV21IS065</td>
+                        <td>Karthik Rao</td>
+                        <td>Information Science</td>
+                        <td>Attendance Query</td>
+                        <td>09:42 AM</td>
+                        <td><span class="badge">Completed</span></td>
+                        <td><button class="action-btn" onclick="alert('Loading details...')">View</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
